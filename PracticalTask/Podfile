@@ -13,6 +13,9 @@ target 'PracticalTask' do
    pod 'SVProgressHUD'
    pod 'SDWebImage'
    pod 'ObjectMapper'
+#   pod 'Socket.IO-Client-Swift'
+
+    pod 'Socket.IO-Client-Swift'
 
   target 'PracticalTaskTests' do
     inherit! :search_paths

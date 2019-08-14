@@ -23,5 +23,11 @@ struct WebService {
             completion(response.result)
         }
     }
+    
+    func stopAllSessions() {
+        Alamofire.SessionManager.default.session.getAllTasks { tasks in
+            tasks.forEach { $0.cancel() }
+        }
+    }
    
 }

@@ -17,7 +17,7 @@ class MediaListVC: UIViewController {
     var theModelData:[MediaList] = []
     var mediaType = MediaType.all
     
-    lazy var searchBar = UISearchBar(frame: CGRect.zero)
+    lazy var searchBar = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,26 +27,71 @@ class MediaListVC: UIViewController {
     func setupUI() {
         theCurrentView.setupLayout()
         theCurrentView.setupTableView(delegate: self)
-        getMediaListWebService(strSeachText: "justin")
-        searchBar.showsCancelButton = true
-        searchBar.placeholder = "Search"
-        searchBar.delegate = self
-        self.navigationItem.titleView = searchBar
+        
+        searchBar.searchBar.delegate = self
+        searchBar.searchBar.placeholder = "Search"
+        searchBar.hidesNavigationBarDuringPresentation = false
+        self.definesPresentationContext = true
+        searchBar.searchBar.tintColor = UIColor.init(hexString: "#84487A")
+        self.navigationItem.searchController = searchBar
+        
+        let segment: UISegmentedControl = UISegmentedControl(items: ["All", "Movie","Music","Music Video","tvShow"])
+        segment.sizeToFit()
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(segmentSelected(_:)), for: .valueChanged)
+        self.navigationItem.titleView = segment
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+
+    }
+    
+    @objc func segmentSelected(_ segment:UISegmentedControl) {
+        print("segment",segment.selectedSegmentIndex)
+        switch segment.selectedSegmentIndex {
+        case 1:
+           mediaType = .movie
+            break
+        case 2:
+            mediaType = .music
+            break
+        case 3:
+            mediaType = .musicVideo
+        case 4:
+            mediaType = .tvShow
+        default:
+            mediaType = .all
+            break
+        }
+        getMediaListWebService(strSeachText: searchBar.searchBar.text ?? "")
+    }
 
 }
-//MARK:- UISearchBarDelegate
+//MARK:- UISearchControllerDelegate
 extension MediaListVC:UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
+        self.searchBar.dismiss(animated: true, completion: nil)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            getMediaListWebService(strSeachText: searchText)
+        }
     }
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
-
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchText = searchBar.text
+        searchBar.resignFirstResponder()
+        self.searchBar.dismiss(animated: true, completion: nil)
+        
+        
+        if searchText != nil,!searchText!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            getMediaListWebService(strSeachText: searchText!)
+        }
     }
 }
 
@@ -73,6 +118,9 @@ extension MediaListVC:UITableViewDelegate {
 //MARK:- Api Call
 extension MediaListVC {
     func getMediaListWebService(strSeachText:String) {
+        WebService().stopAllSessions()
+        theModelData.removeAll()
+        theCurrentView.tableView.reloadData()
         theCurrentView.setActivity(isStart: true)
         theCurrentView.setMsg(strMsg: "Currently searching,\n please wait", isHidden: false)
         ListWebService.shared.getListofMediaService(endURL: "term=\(strSeachText)&media=\(mediaType.rawValue)", success: { [weak self] (list) in
@@ -84,7 +132,7 @@ extension MediaListVC {
             self?.theModelData = []
             self?.theCurrentView.tableView.reloadData()
             self?.theCurrentView.setActivity(isStart: false)
-            self?.theCurrentView.setMsg(strMsg: error, isHidden: true)
+            self?.theCurrentView.setMsg(strMsg: error, isHidden: false)
         })
     }
 }

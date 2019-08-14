@@ -15,7 +15,7 @@ class MediaListView: UIView {
     @IBOutlet weak var tableView: UITableView!
     
     func setupLayout()  {
-        setMsg(strMsg: "Please, enter search term", isHidden: false)
+        setMsg(strMsg: "Please, enter a search term", isHidden: false)
     }
     
     func setupTableView(delegate:MediaListVC) {
@@ -31,9 +31,7 @@ class MediaListView: UIView {
             activityIndicator.startAnimating()
         } else {
             activityIndicator.stopAnimating()
-            
         }
-
     }
     
     func setMsg(strMsg:String,isHidden:Bool) {

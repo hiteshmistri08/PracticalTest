@@ -8,6 +8,9 @@ PODS:
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - Socket.IO-Client-Swift (15.1.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.0)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.3.0)
 
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - ObjectMapper
   - SDWebImage
+  - Socket.IO-Client-Swift
   - SVProgressHUD
   - SwiftyJSON
 
@@ -27,6 +31,8 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - ObjectMapper
     - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
     - SVProgressHUD
     - SwiftyJSON
 
@@ -36,9 +42,11 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: b2dc2064a42f361687fd010e389a53bb605508f4
+PODFILE CHECKSUM: dfaf2a28367df877b5c0bbddd79f886b4751459a
 
 COCOAPODS: 1.5.0

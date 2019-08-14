@@ -17,7 +17,7 @@ class ListWebService {
             failed("Please check your internet connection")
             return
         }
-        
+    
         WebService().GetWebservice(endPoint: endURL) { (result) in
             switch result {
             case .success(let value):

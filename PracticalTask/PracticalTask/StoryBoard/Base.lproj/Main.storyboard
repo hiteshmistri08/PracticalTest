@@ -24,8 +24,9 @@
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cRL-O3-yc6">
                                 <rect key="frame" x="169" y="136" width="37" height="37"/>
+                                <color key="color" red="0.51764705879999995" green="0.28235294119999998" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEm-Rf-Cbf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEm-Rf-Cbf">
                                 <rect key="frame" x="166" y="183" width="43" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" red="0.51764705882352935" green="0.28235294117647058" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,7 +41,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fkZ-ul-Lsw" secondAttribute="bottom" id="WUs-gs-4HK"/>
                             <constraint firstItem="cRL-O3-yc6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bT3-7t-IH1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fkZ-ul-Lsw" secondAttribute="trailing" id="h1d-gC-8Zw"/>
-                            <constraint firstItem="cRL-O3-yc6" firstAttribute="top" secondItem="fkZ-ul-Lsw" secondAttribute="top" constant="20" id="jdS-br-Get"/>
+                            <constraint firstItem="cRL-O3-yc6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jdS-br-Get"/>
                             <constraint firstItem="uEm-Rf-Cbf" firstAttribute="top" secondItem="cRL-O3-yc6" secondAttribute="bottom" constant="10" id="pGi-8j-dIw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

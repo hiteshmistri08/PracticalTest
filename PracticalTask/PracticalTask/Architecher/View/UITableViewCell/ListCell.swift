@@ -37,7 +37,7 @@ class ListCell: UITableViewCell {
         lblCost.text = "$ \(theModel.trackPrice)"
         var mediaTime = theModel.primaryGenreName
         
-        let trackTime = Double(theModel.trackTimeMillis).asString(style: .full)
+        let trackTime = Double(theModel.trackTimeMillis).stringTime
         
         if !trackTime.isEmpty {
             mediaTime += " | "
